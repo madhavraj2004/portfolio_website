@@ -3,75 +3,348 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Portfolio</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <title>MADHAV RAJ - Tech Freelancer</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background: linear-gradient(to right, #f9f9f9, #e1e1e1);
+            overflow-x: hidden;
+        }
+        header {
+            position: relative;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)), url('https://www.bing.com/images/search?view=detailV2&ccid=77le53ug&id=32DBBBEF452F0A1643A62D5F34934ADD56B87EBE&thid=OIP.77le53ug8lZRbpUvZpkR7AHaEc&mediaurl=https%3A%2F%2Fstatic.vecteezy.com%2Fsystem%2Fresources%2Fpreviews%2F006%2F430%2F145%2Fnon_2x%2Ftechnology-background-concept-circuit-board-electronic-system-futuristic-hi-tech-light-on-dark-blue-free-vector.jpg&exph=980&expw=1633&q=tech+images+background&simid=608016388993255857&FORM=IRPRST&ck=F1BA295F9141AD0AAAB38A85A9E0ADBF&selectedIndex=110&itb=0&cw=1786&ch=847&ajaxhist=0&ajaxserp=0') no-repeat center center/cover;
+            color: #fff;
+            padding: 120px 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 4em;
+            font-weight: 700;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+        }
+        header p {
+            margin: 10px 0 30px;
+            font-size: 1.75em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            padding: 0;
+            list-style: none;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 25px;
+            background-color: #6e45e2;
+            transition: background 0.3s, color 0.3s, transform 0.3s;
+        }
+        nav a:hover {
+            background-color: #fff;
+            color: #6e45e2;
+            transform: scale(1.05);
+        }
+        section {
+            padding: 60px 20px;
+            margin: auto;
+            max-width: 1200px;
+            position: relative;
+        }
+        .about, .highlights, .portfolio, .contact {
+            background: #fff;
+            padding: 40px;
+            margin: 20px 0;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            transition: box-shadow 0.3s, transform 0.3s;
+        }
+        .about:hover, .highlights:hover, .portfolio:hover, .contact:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+            transform: translateY(-5px);
+        }
+        .about h2, .portfolio h2, .highlights h2, .contact h2 {
+            margin-top: 0;
+            font-size: 2.5em;
+            color: #6e45e2;
+            border-bottom: 3px solid #6e45e2;
+            padding-bottom: 10px;
+        }
+        .portfolio .swiper-container {
+            width: 100%;
+            height: 500px;
+        }
+        .swiper-slide {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .swiper-slide img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            transition: transform 0.3s;
+        }
+        .swiper-slide:hover {
+            transform: scale(1.05);
+        }
+        .swiper-slide:hover img {
+            transform: scale(1.1);
+        }
+        .swiper-pagination {
+            bottom: 10px !important;
+        }
+        .swiper-button-next, .swiper-button-prev {
+            color: #6e45e2;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.5);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            max-width: 800px;
+            margin: auto;
+        }
+        .modal-close {
+            float: right;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .modal-close:hover {
+            color: #6e45e2;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .social-links a {
+            color: #333;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 2em;
+            transition: color 0.3s, transform 0.3s;
+        }
+        .social-links a:hover {
+            color: #6e45e2;
+            transform: scale(1.1);
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        footer p {
+            margin: 0;
+	} 
+	.resume-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            color: #fff;
+            background-color: #6e45e2;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: background 0.3s, transform 0.3s;
+        }
+        .resume-button:hover {
+            background-color: #fff;
+            color: #6e45e2;
+            transform: scale(1.05);
+        }
+        @media (max-width: 768px) {
+            header {
+                padding: 80px 10px;
+            }
+            nav {
+                flex-direction: column;
+            }
+            nav a {
+                margin: 10px 0;
+            }
+            section {
+                padding: 40px 10px;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
+        <h1>MADHAV RAJ</h1>
+        <p>Tech Freelancer | Innovator | Problem Solver</p>
         <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About Me</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#resume">Resume</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+            <a href="#about">About Me</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#contact">Contact</a>
         </nav>
     </header>
-    
-    <section id="home">
-        <h1>Welcome to My Portfolio</h1>
-        <p>Hi, I'm [Your Name], a [Your Profession]</p>
-    </section>
-    
-    <section id="about">
+
+    <section id="about" class="about">
         <h2>About Me</h2>
-        <p>[A brief introduction about yourself]</p>
+        <p>Hello! I'm Madhav, a passionate tech freelancer specializing in software development, web design, and technology solutions. With years of experience in the industry, I strive to deliver high-quality solutions that meet and exceed client expectations. My expertise includes app development and webpage making but is not limited to web development, mobile app development, and cloud-based solutions. When I'm not coding, you can find me exploring new technologies and working on exciting personal projects.</p>
+        <a href="Curriculum_Vitae.pdf" class="resume-button" download="">Download Resume</a>
     </section>
-    
-    <section id="projects">
-        <h2>Projects</h2>
-        <div class="project">
-            <h3>Project Title</h3>
-            <p>Project Description</p>
+
+    <section id="highlights" class="highlights">
+        <h2>Highlights</h2>
+        <!-- Swiper -->
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" data-description="Project 1: A web app designed to help manage tasks efficiently. Includes features such as real-time updates and task categorization.">
+                    <img src="https://via.placeholder.com/800x500?text=Project+1" alt="Project 1">
+                </div>
+                <div class="swiper-slide" data-description="Project 2: An e-commerce platform with a focus on user experience and high performance. Includes secure payment options and a customizable interface.">
+                    <img src="https://via.placeholder.com/800x500?text=Project+2" alt="Project 2">
+                </div>
+                <div class="swiper-slide" data-description="Project 3: A mobile app for tracking fitness activities. Features include goal setting, progress tracking, and social sharing capabilities.">
+                    <img src="https://via.placeholder.com/800x500?text=Project+3" alt="Project 3">
+                </div>
+                <div class="swiper-slide" data-description="Project 4: A cloud-based CRM system for managing customer relationships. Includes tools for tracking interactions, sales, and support.">
+                    <img src="https://via.placeholder.com/800x500?text=Project+4" alt="Project 4">
+                </div>
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+            <!-- Add Navigation -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
         </div>
     </section>
-    
-    <section id="skills">
-        <h2>Skills</h2>
-        <ul>
-            <li>Skill 1</li>
-            <li>Skill 2</li>
-            <li>Skill 3</li>
-        </ul>
+
+    <section id="portfolio" class="portfolio">
+        <h2>Portfolio</h2>
+        <div class="portfolio-item">
+            <h3>Gesture Control Wheelchair</h3>
+            <img src="https://via.placeholder.com/800x400?text=Gesture+Control+Wheelchair" alt="Gesture Control Wheelchair">
+            <p>A gesture-controlled wheelchair aimed at enhancing mobility for physically challenged individuals, developed under the mentorship of Dr. Dinesh Pradhan. <a href="#" target="_blank">View Project</a></p>
+        </div>
+        <div class="portfolio-item">
+            <h3>Real-Time Temperature and Humidity Monitoring App</h3>
+            <img src="https://via.placeholder.com/800x400?text=Real-Time+Temperature+and+Humidity+Monitoring+App" alt="Real-Time Temperature and Humidity Monitoring App">
+            <p>A mobile application for real-time monitoring of temperature and humidity, using block-based programming on MIT App Inventor. <a href="#" target="_blank">View Project</a></p>
+        </div>
+        <div class="portfolio-item">
+            <h3>Intelligent Air & Noise Pollution Sensing App</h3>
+            <img src="https://via.placeholder.com/800x400?text=Intelligent+Air+%26+Noise+Pollution+Sensing+App" alt="Intelligent Air & Noise Pollution Sensing App">
+            <p>A mobile application for real-time air and noise pollution monitoring with smart alerts and data analytics, developed under the "I-PolluSense" project funded by IIT Kharagpur AI4ICPS | Hub Foundation. <a href="#" target="_blank">View Project</a></p>
+        </div>
     </section>
-    
-    <section id="resume">
-        <h2>Resume</h2>
-        <a href="resume.pdf" target="_blank">Download Resume</a>
+
+    <section id="contact" class="contact">
+        <h2>Contact Information</h2>
+        <p>If you'd like to work with me or just want to say hello, feel free to reach out!</p>
+        <p>Email: <a href="mailto:raj.madhav2004@gmail.com">raj.madhav2004@gmail.com</a></p>
+        <p>Phone: +91 7070679606</p>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/madhav-raj-06b943231/" target="_blank" title="LinkedIn">
+                <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 21v-8.586c0-3.236-1.097-5.794-3.184-7.743-1.092-1.092-2.395-1.997-3.82-2.533-1.51-.575-3.18-.868-5.015-.868s-3.505.293-5.015.868c-1.425.536-2.728 1.441-3.82 2.533-2.087 1.949-3.184 4.507-3.184 7.743v8.586h6v-8h-6v-1.414c0-2.206.897-4.148 2.5-5.586 1.574-1.407 3.572-2.205 5.8-2.205s4.226.798 5.8 2.205c1.603 1.438 2.5 3.38 2.5 5.586v1.414h-6v8h6z"/></svg>
+            </a>
+            <a href="https://github.com/madhavraj2004" target="_blank" title="GitHub">
+                <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0c-6.627 0-12 5.373-12 12 0 5.308 3.438 9.792 8.207 11.4.6.113.825-.261.825-.581v-2.127c-3.338.728-4.042-1.6-4.042-1.6-.545-1.388-1.334-1.76-1.334-1.76-1.089-.743.083-.728.083-.728 1.205.085 1.838 1.261 1.838 1.261 1.082 1.87 2.853 1.333 3.548 1.021.111-.785.426-1.333.776-1.64-2.72-.309-5.585-1.359-5.585-6.042 0-1.334.476-2.427 1.261-3.29-.127-.31-.548-1.565.118-3.264 0 0 1.03-.331 3.375 1.261a11.766 11.766 0 013.078-.408c1.045.005 2.094.141 3.078.408 2.342-1.592 3.374-1.261 3.374-1.261.666 1.699.244 2.954.118 3.264.787.863 1.261 1.956 1.261 3.29 0 4.698-2.868 5.731-5.592 6.038.457.396.86 1.182.86 2.388v3.548c0 .329.217.712.83.591a10 10 0 00-3.846-19.39z"/></svg>
+            </a>
+            <a href="https://x.com/Madhavr57880772" target="_blank" title="Twitter">
+                <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23 3c-0.88 0.39-1.83 0.66-2.83 0.78 1.02-0.61 1.8-1.58 2.17-2.73-0.96 0.57-2.03 0.98-3.17 1.21-0.9-0.96-2.18-1.56-3.57-1.56-2.71 0-4.91 2.2-4.91 4.91 0 0.38 0.04 0.76 0.11 1.12-4.08-0.2-7.71-2.16-10.14-5.12-0.42 0.71-0.66 1.54-0.66 2.43 0 1.68 0.86 3.17 2.17 4.05-0.8-0.03-1.56-0.24-2.23-0.6v0.06c0 2.34 1.66 4.3 3.88 4.75-0.41 0.11-0.85 0.17-1.29 0.17-0.31 0-0.61-0.03-0.91-0.09 0.61 1.89 2.37 3.27 4.47 3.31-1.64 1.28-3.71 2.05-5.96 2.05-0.39 0-0.77-0.02-1.15-0.07 2.14 1.37 4.67 2.16 7.41 2.16 8.88 0 13.72-7.36 13.72-13.72 0-0.21-0.01-0.42-0.02-0.63 0.94-0.68 1.76-1.53 2.41-2.51z"/></svg>
+            </a>
+        </div>
     </section>
-    
-    <section id="contact">
-        <h2>Contact</h2>
-        <form action="mailto:your-email@example.com" method="post" enctype="text/plain">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name">
-            
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email">
-            
-            <label for="message">Message:</label>
-            <textarea id="message" name="message"></textarea>
-            
-            <input type="submit" value="Send">
-        </form>
-    </section>
-    
+
     <footer>
-        <p>&copy; 2024 [Your Name]. All rights reserved.</p>
+        <p>&copy; 2024 Madhav Raj. All rights reserved.</p>
     </footer>
-    
-    <script src="js/scripts.js"></script>
+
+    <!-- Modal -->
+    <div id="project-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2>Project Title</h2>
+            <p>This is a brief description of the project. It provides an overview of the work done, technologies used, and key features of the project.</p>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        // Initialize Swiper
+        const swiper = new Swiper('.swiper-container', {
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+        });
+
+        // Smooth scrolling for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Open modal on carousel image click
+        document.querySelectorAll('.swiper-slide').forEach(slide => {
+            slide.addEventListener('click', () => {
+                const description = slide.getAttribute('data-description');
+                const modal = document.getElementById('project-modal');
+                modal.querySelector('h2').textContent = slide.querySelector('img').alt;
+                modal.querySelector('p').textContent = description;
+                modal.style.display = 'flex';
+            });
+        });
+
+        // Close modal
+        document.querySelector('.modal-close').addEventListener('click', () => {
+            document.getElementById('project-modal').style.display = 'none';
+        });
+
+        // Close modal when clicking outside the content
+        window.addEventListener('click', (event) => {
+            if (event.target === document.getElementById('project-modal')) {
+                document.getElementById('project-modal').style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
